@@ -1,6 +1,5 @@
-package com.example.spotify.ui.theme
+package com.spotify.design.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

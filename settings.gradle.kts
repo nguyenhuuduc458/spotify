@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Spotify"
 include(":app")
+include(":core:android-design")
