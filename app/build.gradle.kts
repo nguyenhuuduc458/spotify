@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ktlint)
 }
 
 android {
@@ -23,10 +24,36 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
+
+    // Always show the result of every unit test, even if it passes.
+    testOptions.unitTests {
+        isIncludeAndroidResources = true
+        beforeEvaluate {
+            println(">> Running unit test:")
+        }
+        all { test ->
+            with(test) {
+                filter {
+                    excludeTestsMatching("com.example.note.database.*")
+                }
+                testLogging {
+                    events =
+                        setOf(
+                            org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
+                            org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
+                            org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
+                            org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT,
+                            org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR,
+                        )
+                }
+            }
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -37,6 +64,15 @@ android {
     buildFeatures {
         compose = true
     }
+}
+
+// Ktlint configuration
+ktlint {
+    version.set("1.3.1")
+    debug.set(true)
+    android.set(true)
+    ignoreFailures.set(false)
+    outputToConsole.set(true)
 }
 
 dependencies {
