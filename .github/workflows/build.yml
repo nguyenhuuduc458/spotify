@@ -1,4 +1,4 @@
-name: Android CI
+name: Build and Release
 env:
   # The name of the main module repository
   main_project_module: app
