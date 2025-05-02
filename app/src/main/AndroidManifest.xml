@@ -31,7 +31,7 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-            <meta-data android:name="com.example.spotify.startup.PreInitializer" android:value="androidx.startup" />
+            <meta-data android:name="com.example.spotify.startup.LoggerInitializer" android:value="androidx.startup" />
         </provider>
     </application>
 
