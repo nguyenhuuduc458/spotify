@@ -1,0 +1,11 @@
+@startuml
+(app) --> [PreInitializer]
+[CrashlyticsInitializer] --> [PreInitializer]
+[LoggerInitializer] --> [CrashlyticsInitializer]
+
+component InitializerEntryPoint {
+    [DependencyGraphEntryPoint]
+}
+
+[PreInitializer] --> [DependencyGraphEntryPoint]
+@enduml
