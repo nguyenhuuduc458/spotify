@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.startup.Initializer
 import com.example.spotify.dagger.InitializerEntryPoint
 
-class DependencyGraphInitializer: Initializer<Unit> {
+class DependencyGraphInitializer : Initializer<Unit> {
     override fun create(context: Context) {
         InitializerEntryPoint.resolve(context)
     }

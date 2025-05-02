@@ -20,12 +20,13 @@ interface InitializerEntryPoint {
 
     companion object {
         fun resolve(context: Context): InitializerEntryPoint {
-            val appContext = context.applicationContext ?: throw IllegalStateException(
-                "Context is not an application context"
-            )
+            val appContext =
+                context.applicationContext ?: throw IllegalStateException(
+                    "Context is not an application context",
+                )
             return EntryPointAccessors.fromApplication(
                 appContext,
-                InitializerEntryPoint::class.java
+                InitializerEntryPoint::class.java,
             )
         }
     }

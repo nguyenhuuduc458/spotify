@@ -7,7 +7,6 @@ import com.example.spotify.dagger.InitializerEntryPoint
 import javax.inject.Inject
 
 class LoggerInitializer : Initializer<Unit> {
-
     @Inject
     lateinit var crashlyticsHelper: CrashlyticsHelper
 
@@ -16,10 +15,9 @@ class LoggerInitializer : Initializer<Unit> {
         // Config logback in future
     }
 
-    override fun dependencies(): List<Class<out Initializer<*>>>  = listOf(CrashlyticsInitializer::class.java)
+    override fun dependencies(): List<Class<out Initializer<*>>> = listOf(CrashlyticsInitializer::class.java)
 
     companion object {
         private const val MAX_LOG_FILES: Int = 9
     }
-
 }

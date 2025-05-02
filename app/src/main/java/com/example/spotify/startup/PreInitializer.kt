@@ -6,7 +6,7 @@ import com.example.spotify.crashlytics.CrashlyticsHelper
 import com.example.spotify.dagger.InitializerEntryPoint
 import javax.inject.Inject
 
-class PreInitializer: Initializer<Unit> {
+class PreInitializer : Initializer<Unit> {
     @Inject
     lateinit var crashlyticsHelper: CrashlyticsHelper
 
@@ -15,8 +15,8 @@ class PreInitializer: Initializer<Unit> {
         crashlyticsHelper.preInit(context)
     }
 
-    override fun dependencies(): List<Class<out Initializer<*>>> = listOf(
-        DependencyGraphInitializer::class.java
-    )
-
+    override fun dependencies(): List<Class<out Initializer<*>>> =
+        listOf(
+            DependencyGraphInitializer::class.java,
+        )
 }
